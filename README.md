@@ -5,10 +5,11 @@ Interactive backup script for pCloud to Synology NAS using rclone with screen se
 ## Features
 
 - Interactive folder selection from pCloud root directories
+- **Optimized API rate limits**: 6 parallel transfers, enhanced retry logic
 - Incremental backup (only syncs new/modified files)
-- Screen session support for background execution
-- Progress monitoring and error handling
-- Optimized for large files with rate limiting
+- **Tmux session support** for background execution and session persistence
+- Progress monitoring with human-readable MB/GB units
+- Optimized for large files with intelligent rate limiting
 
 ## Prerequisites
 
@@ -43,26 +44,26 @@ Update the REMOTE variable with your configured pCloud remote name.
 ./pcloud_backup_interactive.sh
 ```
 
-### With Screen Session (Recommended for large backups)
+### With Tmux Session (Recommended for large backups)
 ```bash
-# Start screen session
-screen -S pcloud_backup
+# Start tmux session
+tmux new -s pcloud_backup
 
 # Run the script
 ./pcloud_backup_interactive.sh
 
-# Detach from screen (keeps running in background)
-# Press: Ctrl+A, then D
+# Detach from tmux (keeps running in background)
+# Press: Ctrl+B, then D
 
 # Reattach later to check progress
-screen -r pcloud_backup
+tmux attach -s pcloud_backup
 ```
 
 ## Documentation
 
 - [rclone Remote Configuration Guide](docs/rclone-setup.md)
 - [Interactive Script Usage](docs/script-usage.md) 
-- [Screen Session Management](docs/screen-management.md)
+- [Tmux Session Management](docs/tmux-management.md)
 
 ## File Structure
 
@@ -72,7 +73,7 @@ pCloud_rclone_Backup_Sync/
 ├── docs/                          # Documentation
 │   ├── rclone-setup.md           # rclone configuration guide
 │   ├── script-usage.md           # Script usage instructions
-│   └── screen-management.md      # Screen session guide
+│   └── tmux-management.md        # Tmux session guide
 └── README.md                     # This file
 ```
 

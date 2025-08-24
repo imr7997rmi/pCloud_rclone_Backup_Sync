@@ -47,6 +47,16 @@ Transferred:    89 / 89, 100%
 
 ## Configuration
 
+### API Rate Limits (Optimized)
+Current settings based on community testing:
+```bash
+--tpslimit 3            # 3 transactions per second (safe limit)
+--transfers 6           # 6 parallel file transfers  
+--checkers 8            # 8 parallel file checks
+--retries 10            # 10 retry attempts
+--low-level-retries 100 # 100 connection retries
+```
+
 ### Change Destination
 Edit the script to change backup location:
 ```bash
